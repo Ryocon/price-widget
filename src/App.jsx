@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import Dropdown from 'react-bootstrap/Dropdown';
 // import './App.css'
 import Api from './components/Api'
+import Toggle from './components/Toggle'
 
 function App() {
 
@@ -12,11 +12,11 @@ function App() {
 
 
 
-
+    
 
       hello
 
-
+      <Toggle />
       <Api />
     </div>
   )
