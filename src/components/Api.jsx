@@ -2,20 +2,23 @@ import React from "react";
 import { useState, useEffect } from "react"
 
 function coinFetch () {
-    let [ethData, setEth] = useState(0.00)
+    let [ethData, setEth] = useState('')
+    let [userCoin, setCoin] = useState('Etherium')
 
     function ethFetch() {
         fetch('https://api.coinpaprika.com/v1/tickers/eth-ethereum?quotes=GBP,USD')
         .then((response) => response.json())
         .then((data) => {
             console.log(data.quotes.GBP.price)
-            setEth(data.quotes.GBP.price)
+            setEth(data)
         })
         .catch((err) => {
             console.log(err.message)
         })
         
     }
+
+    console.log(ethData.quotes)
 
 
     useEffect(() => {
@@ -24,7 +27,7 @@ function coinFetch () {
 
     return (
         <div>
-            price: {ethData.toFixed(2)}
+            {/* price: {ethData.quotes.GBP.price} */}
         </div>
     )
 }

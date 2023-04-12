@@ -17,6 +17,7 @@ function Toggle() {
 
    console.log(coinValue)
    console.log(currency)
+   localStorage.clear()
    localStorage.setItem(coinValue, currency)
 
   return (
