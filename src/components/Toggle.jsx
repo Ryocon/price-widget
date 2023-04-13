@@ -34,6 +34,7 @@ function Toggle() {
         </ToggleButton>
       </ToggleButtonGroup>
       <br />
+     
       <ToggleButtonGroup type="radio" name="currency" defaultValue={'GBP'}
       onChange={handleChangeCurrency}>
         <ToggleButton id="currency-radio-1" value={'GBP'}>
@@ -44,10 +45,11 @@ function Toggle() {
         </ToggleButton>
       </ToggleButtonGroup>
 
-
       <CoinFetch 
       coinValue={coinValue}
       currency={currency} />
+
+      
     </>
   );
 }

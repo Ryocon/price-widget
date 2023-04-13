@@ -29,7 +29,7 @@ function CoinFetch (props) {
 
         console.log('Set to fetch: ' + coinData)
 
-        if (coinData == 'Etherium') {
+        if (coinData === 'Etherium') {
             ethFetch(currencyData)
         } else {
             btcFetch(currencyData)

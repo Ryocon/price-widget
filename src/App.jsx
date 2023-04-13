@@ -11,11 +11,6 @@ function App() {
     <div className="App">
 
 
-
-    
-
-      hello
-
       <Toggle />
       
     </div>
