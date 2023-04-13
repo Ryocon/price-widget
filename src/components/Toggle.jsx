@@ -7,13 +7,17 @@ function Toggle() {
 
    let [coinValue, setValue] = useState(localStorage.getItem('coin'))
    let [currency, setCurrency] = useState(localStorage.getItem('currency'))
+//    let [currentCoin, setCoin] = useState('')
+//    let [currentCurrency, setCurrentCurrency] = useState('')
 
    const handleChangeCoin = (value) => {
     setValue(value)
+    // setCoin(value)
    }
 
    const handleChangeCurrency = (value) => {
     setCurrency(value)
+    // setCurrentCurrency(value)
    }
 
    console.log(coinValue)

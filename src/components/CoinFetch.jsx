@@ -17,8 +17,9 @@ function CoinFetch (props) {
 
     // second useeffect to remove selection lag
     useEffect(() => {
-        setCurrencyData(currency)
+    setCurrencyData(currency)
     setCoinData(coinValue)
+    console.log(currency, coinValue)
     })
     
 
@@ -112,7 +113,7 @@ function CoinFetch (props) {
 
     return (
         <div>
-            <Button onClick={handleClick}><TbReload /></Button>
+            <Button onClick={handleClick}>Fetch <TbReload /></Button>
             Price: {symbol} {parseFloat(coinPrice).toFixed(2)}
         </div>
     )
