@@ -1,6 +1,6 @@
 import { useState } from 'react'
 // import './App.css'
-import Api from './components/Api'
+import CoinFetch from './components/CoinFetch'
 import Toggle from './components/Toggle'
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
       hello
 
       <Toggle />
-      <Api />
+      
     </div>
   )
 }

@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
+import CoinFetch from './CoinFetch'
 
 function Toggle() {
 
-   let [coinValue, setValue] = useState('Etherium')
-   let [currency, setCurrency] = useState('GBP')
+   let [coinValue, setValue] = useState(localStorage.getItem('coin'))
+   let [currency, setCurrency] = useState(localStorage.getItem('currency'))
 
    const handleChangeCoin = (value) => {
     setValue(value)
@@ -18,7 +19,9 @@ function Toggle() {
    console.log(coinValue)
    console.log(currency)
    localStorage.clear()
-   localStorage.setItem(coinValue, currency)
+//    setting local storage
+   localStorage.setItem('coin', coinValue)
+   localStorage.setItem('currency', currency)
 
   return (
     <>
@@ -40,6 +43,11 @@ function Toggle() {
           USD
         </ToggleButton>
       </ToggleButtonGroup>
+
+
+      <CoinFetch 
+      coinValue={coinValue}
+      currency={currency} />
     </>
   );
 }
