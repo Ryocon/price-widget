@@ -25,7 +25,7 @@ function Toggle() {
 
   return (
     <>
-      <ToggleButtonGroup type="radio" name="coin-options" defaultValue={'Etherium'} onChange={handleChangeCoin}>
+      <ToggleButtonGroup type="radio" name="coin-options" id="coin-select" defaultValue={'Etherium'} onChange={handleChangeCoin}>
         <ToggleButton id="coin-radio-1" value={'Etherium'}>
           Etherium
         </ToggleButton>
@@ -35,7 +35,7 @@ function Toggle() {
       </ToggleButtonGroup>
       <br />
      
-      <ToggleButtonGroup type="radio" name="currency" defaultValue={'GBP'}
+      <ToggleButtonGroup type="radio" name="currency" id="currency-select" defaultValue={'GBP'}
       onChange={handleChangeCurrency}>
         <ToggleButton id="currency-radio-1" value={'GBP'}>
           GBP

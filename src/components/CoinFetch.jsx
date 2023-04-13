@@ -1,34 +1,40 @@
 import React from "react";
 import { useState, useEffect } from "react"
-import Toggle from './Toggle'
+import { Button } from "react-bootstrap";
+import { TbReload } from 'react-icons/tb';
 
 function CoinFetch (props) {
     let [coinPrice, setPrice] = useState('loading..')
 
     let coinValue = props.coinValue
     let currency = props.currency
+
     
     let [currencyData, setCurrencyData] = useState(currency)
     let [coinData, setCoinData] = useState(coinValue)
     
-    
+    let [symbol, setSymbol] = useState('')
 
+    // second useeffect to remove selection lag
+    useEffect(() => {
+        setCurrencyData(currency)
+    setCoinData(coinValue)
+    })
     
-
-    console.log(currencyData, coinData)
 
     console.log(currency, coinValue)
+    console.log(currencyData, coinData)
 
+    
 
     useEffect(() => {
-        // ethFetch(ethData)
-        
-        // console.log(props.currency)
-        setCurrencyData(currency)
-        setCoinData(coinValue)
+       
+        // setCurrencyData(currency)
+        // setCoinData(coinValue)
 
-        console.log('Set to fetch: ' + coinData)
+        console.log('Set to fetch: ' + coinData + currencyData)
 
+        //! Uncomment to ensure API fetch
         if (coinData === 'Etherium') {
             ethFetch(currencyData)
         } else {
@@ -36,6 +42,9 @@ function CoinFetch (props) {
         }
 
     }, [props])
+
+
+    
 
 
     // if eth
@@ -46,12 +55,16 @@ function CoinFetch (props) {
         fetch('https://api.coinpaprika.com/v1/tickers/eth-ethereum?quotes=GBP,USD')
         .then((response) => response.json())
         .then((data) => {
-            if (currencyData == 'GBP') {
+            if (currencyData === 'GBP') {
                 console.log(data.quotes.GBP.price)
                 setPrice(data.quotes.GBP.price)
+                setSymbol('£')
+                // setCurrencyData('GBP')
             } else {
                 console.log(data.quotes.USD.price)
                 setPrice(data.quotes.USD.price)
+                setSymbol('$')
+                // setCurrencyData('USD')
             }
         })
         .catch((err) => {
@@ -68,12 +81,15 @@ function CoinFetch (props) {
         fetch('https://api.coinpaprika.com/v1/tickers/btc-bitcoin?quotes=GBP,USD')
         .then((response) => response.json())
         .then((data) => {
-            if (currencyData == 'GBP') {
+            if (currencyData === 'GBP') {
                 console.log(data.quotes.GBP.price)
                 setPrice(data.quotes.GBP.price)
+                setSymbol('£')
+                // setCurrencyData('GBP')
             } else {
                 console.log(data.quotes.USD.price)
                 setPrice(data.quotes.USD.price)
+                setSymbol('$')
             }
         })
         .catch((err) => {
@@ -83,14 +99,21 @@ function CoinFetch (props) {
     }
 
     
-
+    const handleClick = () => {
+        if (coinData === 'Etherium') {
+            ethFetch(currencyData)
+        } else {
+            btcFetch(currencyData)
+        }
+    }
 
     
     
 
     return (
         <div>
-            Price: {parseFloat(coinPrice).toFixed(2)}
+            <Button onClick={handleClick}><TbReload /></Button>
+            Price: {symbol} {parseFloat(coinPrice).toFixed(2)}
         </div>
     )
 }
