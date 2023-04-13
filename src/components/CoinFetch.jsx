@@ -13,6 +13,7 @@ function CoinFetch(props) {
   let [coinData, setCoinData] = useState(coinValue);
 
   let [symbol, setSymbol] = useState("");
+  let [etherOr, setEtherWay] = useState("")
 
   // second useeffect to remove selection lag
   useEffect(() => {
@@ -52,11 +53,13 @@ function CoinFetch(props) {
           console.log(data.quotes.GBP.price);
           setPrice(data.quotes.GBP.price);
           setSymbol("£");
+          setEtherWay('Eth')
           // setCurrencyData('GBP')
         } else {
           console.log(data.quotes.USD.price);
           setPrice(data.quotes.USD.price);
           setSymbol("$");
+          setEtherWay('Eth')
           // setCurrencyData('USD')
         }
       })
@@ -76,11 +79,13 @@ function CoinFetch(props) {
           console.log(data.quotes.GBP.price);
           setPrice(data.quotes.GBP.price);
           setSymbol("£");
+          setEtherWay('Btc')
           // setCurrencyData('GBP')
         } else {
           console.log(data.quotes.USD.price);
           setPrice(data.quotes.USD.price);
           setSymbol("$");
+          setEtherWay('Btc')
         }
       })
       .catch((err) => {
@@ -103,7 +108,7 @@ function CoinFetch(props) {
         Fetch <TbReload />
       </Button>
       <h4>
-         {symbol}{parseFloat(coinPrice).toFixed(2)}
+         {etherOr} {symbol}{parseFloat(coinPrice).toFixed(2)}
       </h4>
     </div>
   );
