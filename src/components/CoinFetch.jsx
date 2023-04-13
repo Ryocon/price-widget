@@ -13,7 +13,8 @@ function CoinFetch(props) {
   let [coinData, setCoinData] = useState(coinValue);
 
   let [symbol, setSymbol] = useState("");
-  let [etherOr, setEtherWay] = useState("")
+  //   are puns good variables names? No, but here is one anyway
+  let [etherOr, setEtherWay] = useState("");
 
   // second useeffect to remove selection lag
   useEffect(() => {
@@ -53,13 +54,13 @@ function CoinFetch(props) {
           console.log(data.quotes.GBP.price);
           setPrice(data.quotes.GBP.price);
           setSymbol("£");
-          setEtherWay('Eth')
+          setEtherWay("Eth");
           // setCurrencyData('GBP')
         } else {
           console.log(data.quotes.USD.price);
           setPrice(data.quotes.USD.price);
           setSymbol("$");
-          setEtherWay('Eth')
+          setEtherWay("Eth");
           // setCurrencyData('USD')
         }
       })
@@ -79,13 +80,13 @@ function CoinFetch(props) {
           console.log(data.quotes.GBP.price);
           setPrice(data.quotes.GBP.price);
           setSymbol("£");
-          setEtherWay('Btc')
+          setEtherWay("Btc");
           // setCurrencyData('GBP')
         } else {
           console.log(data.quotes.USD.price);
           setPrice(data.quotes.USD.price);
           setSymbol("$");
-          setEtherWay('Btc')
+          setEtherWay("Btc");
         }
       })
       .catch((err) => {
@@ -108,7 +109,8 @@ function CoinFetch(props) {
         Fetch <TbReload />
       </Button>
       <h4>
-         {etherOr} {symbol}{parseFloat(coinPrice).toFixed(2)}
+        {etherOr} {symbol}
+        {parseFloat(coinPrice).toFixed(2)}
       </h4>
     </div>
   );
